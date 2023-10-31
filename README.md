@@ -1,1 +1,1 @@
-# meet-up-backend
+# meet-up
