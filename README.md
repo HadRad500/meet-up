@@ -38,3 +38,8 @@
 ### So that I can see events in more details visually pleasing
 
 ### Scenario 1: Graphs are not displaying anything. Given that user has opened app, When user searches a city that doesnt exist, Then it should display nothing.
+
+
+### Using Serverless
+
+## Ill be using serverless to host my application. It will be the middle man between the user and the Google OAuth provider. When the user obtains authorization then every request made by the user will be passed through Lambda. This will help create a quick and fast deployment using serverless.
