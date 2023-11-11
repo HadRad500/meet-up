@@ -1,7 +1,5 @@
-const Event = () => {
-    return (
-        <li></li>
-    );
-}
+const Event = ({ event }) => {
+  return <li>{event.summary}</li>;
+};
 
 export default Event;
