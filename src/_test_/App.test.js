@@ -11,6 +11,11 @@ describe('<App /> component', () => {
         expect(AppDOM.querySelector('#event-list')).toBeInTheDocument();
     });
 
+    test('renders textbox with number of events', () => {
+        render(<App />);
+        expect(screen.getByPlaceholderText('Enter a number')).toBeInTheDocument();
+    })
+
     test('render CitySearch', () => {
         expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
     });
