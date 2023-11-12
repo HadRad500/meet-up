@@ -15,7 +15,7 @@ const App = () => {
 
   React.useEffect(() => {
     (async () => {
-      const allEvents = await getEvents();
+      const allEvents = await getEvents(); // in the future this should be replaced with an api call
       setEvents(allEvents);
       setAllLocations(extractLocations(allEvents));
     })();
