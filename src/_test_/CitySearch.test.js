@@ -6,23 +6,23 @@ import mockData from "../mock-data";
 
 const allEvents = mockData;
 const allLocations = extractLocations(allEvents);
-
+const func = jest.fn();
 describe("<CitySearch /> component", () => {
   test("renders text input", () => {
-    render(<CitySearch />);
+    render(<CitySearch setSelectedCity={func} />);
     const cityTextBox = screen.queryByRole("textbox");
     expect(cityTextBox).toBeInTheDocument();
     expect(cityTextBox).toHaveClass("city");
   });
 
   test("suggestions list is hidden by default", () => {
-    render(<CitySearch />);
+    render(<CitySearch setSelectedCity={func} />);
     const suggestionList = screen.queryByRole("list");
     expect(suggestionList).not.toBeInTheDocument();
   });
 
   test("renders a list of suggestions when city textbox gains focus", async () => {
-    render(<CitySearch />);
+    render(<CitySearch allLocations={[]} setSelectedCity={func} />);
     const user = userEvent.setup();
     const cityTextBox = screen.queryByRole("textbox");
     await user.click(cityTextBox);
@@ -32,7 +32,7 @@ describe("<CitySearch /> component", () => {
   });
 
   test("updates list of suggestions correctly when user types in city textbox", async () => {
-    render(<CitySearch allLocations={allLocations} />);
+    render(<CitySearch allLocations={allLocations} setSelectedCity={func} />);
 
     //User types "Berlin" in searchbox
     const cityTextBox = screen.queryByRole("textbox");
@@ -56,7 +56,7 @@ describe("<CitySearch /> component", () => {
   });
 
   test("renders the suggestion text in the textbox upon clicking on the suggestion", async () => {
-    render(<CitySearch allLocations={allLocations} />);
+    render(<CitySearch allLocations={allLocations} setSelectedCity={func} />);
     const user = userEvent.setup();
 
     const cityTextBox = screen.queryByRole("textbox");
