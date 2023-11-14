@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CitySearch from "./components/CitySearch";
 import Eventlist from "./components/Eventlist";
 import NumberOfEvents from "./components/NumberOfEvents";
@@ -12,6 +12,17 @@ const App = () => {
   const [filteredEvents, setFilteredEvents] = React.useState([]);
   const [noOfEvents, setNoOfEvents] = React.useState(32);
   const [errorAlert, setErrorAlert] = React.useState("");
+  const [currentNOE, setCurrentNOE] = useState(32);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const allEvents = await getEvents();
+    setEvents(allEvents.slice(0, currentNOE));
+    setAllLocations(extractLocations(allEvents));
+  }
 
   React.useEffect(() => {
     (async () => {
