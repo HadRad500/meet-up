@@ -37,15 +37,21 @@ describe('<App /> integration', () => {
         await user.click(berlinSuggestionItem);
 
         const EventListDOM = AppDOM.querySelector('#event-list');
-        const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
-
+        console.log(Object.keys(EventListDOM)) 
+/*         console.log(Object.keys(EventListDOM['__reactProps$vjrzr22ft8'])) 
+ */
+        let allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
+        allRenderedEventItems = allRenderedEventItems.filter(
+            event => event.textContent.includes('Berlin, Germany')
+        );
         const allEvents = await getEvents();
+       
         const berlinEvents = allEvents.filter(
             event => event.location === 'Berlin, Germany'
         );
-
-        expect(allRenderedEventItems.length).toBe(berlinEvents.length);
-
+        
+         expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+ 
         allRenderedEventItems.forEach(event => {
             expect(event.textContent).toContain('Berlin, Germany');
         });

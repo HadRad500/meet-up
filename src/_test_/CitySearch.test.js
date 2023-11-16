@@ -5,8 +5,6 @@ import CitySearch from "../components/CitySearch";
 import App from "../App";
 import mockData from "../mock-data";
 
-const allEvents = mockData;
-const allLocations = extractLocations(allEvents);
 const func = jest.fn();
 describe("<CitySearch /> component", () => {
     /* let CitySearchComponent;
@@ -38,6 +36,8 @@ describe("<CitySearch /> component", () => {
   });
 
   test("updates list of suggestions correctly when user types in city textbox", async () => {
+    const allEvents = await getEvents();
+    const allLocations = extractLocations(allEvents);
     render(<CitySearch allLocations={allLocations} setSelectedCity={func} />);
 
     //User types "Berlin" in searchbox
@@ -62,10 +62,10 @@ describe("<CitySearch /> component", () => {
   });
 
   test("renders the suggestion text in the textbox upon clicking on the suggestion", async () => {
-    render(<CitySearch allLocations={allLocations} setSelectedCity={func} />);
-    const user = userEvent.setup();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
+    render(<CitySearch allLocations={allLocations} setSelectedCity={func} />);
+    const user = userEvent.setup();
     
 
     const cityTextBox = screen.queryByRole("textbox");
