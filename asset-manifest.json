@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "/HadRad500/meet-up.git/static/css/main.073c9b0a.css",
-    "main.js": "/HadRad500/meet-up.git/static/js/main.6c8acca9.js",
-    "static/js/787.4b564826.chunk.js": "/HadRad500/meet-up.git/static/js/787.4b564826.chunk.js",
-    "service-worker.js": "/HadRad500/meet-up.git/service-worker.js",
-    "static/media/logo.svg": "/HadRad500/meet-up.git/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
-    "index.html": "/HadRad500/meet-up.git/index.html",
-    "main.073c9b0a.css.map": "/HadRad500/meet-up.git/static/css/main.073c9b0a.css.map",
-    "main.6c8acca9.js.map": "/HadRad500/meet-up.git/static/js/main.6c8acca9.js.map",
-    "787.4b564826.chunk.js.map": "/HadRad500/meet-up.git/static/js/787.4b564826.chunk.js.map"
+    "main.css": "/meet-up/static/css/main.7d06d544.css",
+    "main.js": "/meet-up/static/js/main.8b623faa.js",
+    "static/js/787.4b564826.chunk.js": "/meet-up/static/js/787.4b564826.chunk.js",
+    "service-worker.js": "/meet-up/service-worker.js",
+    "index.html": "/meet-up/index.html",
+    "main.7d06d544.css.map": "/meet-up/static/css/main.7d06d544.css.map",
+    "main.8b623faa.js.map": "/meet-up/static/js/main.8b623faa.js.map",
+    "787.4b564826.chunk.js.map": "/meet-up/static/js/787.4b564826.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.6c8acca9.js"
+    "static/css/main.7d06d544.css",
+    "static/js/main.8b623faa.js"
   ]
 }
