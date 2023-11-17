@@ -9,6 +9,7 @@ const App = () => {
   const [selectedCity, setSelectedCity] = React.useState("See all cities");
   const [allLocations, setAllLocations] = React.useState([]);
   const [events, setEvents] = React.useState([]);
+  const [eventNumber, setEventNumber] = useState(32);
   const [filteredEvents, setFilteredEvents] = React.useState([]);
   const [noOfEvents, setNoOfEvents] = React.useState(32);
   const [errorAlert, setErrorAlert] = React.useState("");
@@ -16,11 +17,14 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selectedCity]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
-    setEvents(allEvents.slice(0, currentNOE));
+    const filteredEvents = selectedCity === 'See all cities' ?
+    allEvents :
+    allEvents.filter(event => event.location === selectedCity)
+    setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }
 
@@ -32,9 +36,10 @@ const App = () => {
     })();
   }, []);
 
-  function onEventNumberChange(value) {
+  function onEventNumberChange(value, number) {
+    setEventNumber(number);
     setNoOfEvents(value);
-    handleCitySelected(selectedCity, value);
+    handleCitySelected(selectedCity, value, number);
   }
 
   function handleCitySelected(city, numberOfEvents) {
@@ -50,7 +55,7 @@ const App = () => {
       sliced = filteredEvents.slice(0, numberOfEvents);
     }
     setFilteredEvents(sliced);
-  }
+  };
 
   return (
     <div className="App">

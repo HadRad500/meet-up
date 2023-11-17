@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NumberOfEvents from "../components/NumberOfEvents";
+import App from "../App";
 
 const func = jest.fn();
 
@@ -42,4 +43,16 @@ describe("<NumberOfEvents /> component", () => {
     await userEvent.type(numberTextBox, "10");
     expect(func).toHaveBeenCalled();
   });
+});
+
+describe('<NumberofEvents /> integration', () => {
+    test('renders specific number of events when the app is rendered', async () => {
+        render(<App />);
+        const numberOfEvents = screen.getByTestId('number-of-events');
+        const numberTextBox = within(numberOfEvents).getByRole('textbox');
+        await userEvent.type(numberTextBox, "10");
+        await screen.findAllByRole('listitem');
+        const eventListItems = screen.queryAllByRole('listitem');
+        expect(eventListItems.length).toBe(10)
+    });
 });
