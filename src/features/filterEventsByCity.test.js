@@ -1,7 +1,7 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import { render, within, waitFor } from '@testing-library/react';
 import App from '../App';
-import { getEvents } from '../mock-data';
+import mockData from '../mock-data';
 import userEvent from '@testing-library/user-event';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
@@ -84,7 +84,7 @@ defineFeature(feature, test => {
         and('the user should receive a list of upcoming events in that city', async () => {
             const EventListDOM = AppDOM.querySelector('#event-list');
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-            const allEvents = await getEvents();
+            const allEvents = mockData;
 
     // filtering the list of all events down to events located in Germany
       // citySearchInput.value should have the value "Berlin, Germany" at this point

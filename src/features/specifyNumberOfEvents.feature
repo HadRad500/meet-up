@@ -1,4 +1,5 @@
 Feature: Specify number of events
+
  Scenario: When user hasn’t specified a number, 32 is the default number
   Given the user has not specified a number of events to be listed at a time, 
   When the user views the event list 

@@ -23,7 +23,7 @@ defineFeature(feature, test => {
         });
 
         then(/^it will display (\d+) events at a time.$/, (arg0) => {
-            const numberTextBox = screen.getByPlaceholderText('Enter a number');
+            const numberTextBox = screen.getByPlaceholderText('Enter a Number');
             expect(numberTextBox).toHaveValue('32');
         });
     });
@@ -34,7 +34,7 @@ defineFeature(feature, test => {
         });
 
         when('they enter a new number in the input field', async () => {
-            const numberTextBox = screen.getByPlaceholderText('Enter a number');
+            const numberTextBox = screen.getByPlaceholderText('Enter a Number');
             await userEvent.type(numberTextBox, '10');
         });
 
