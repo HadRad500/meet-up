@@ -47,26 +47,20 @@ export const getEvents = async () => {
 };
 
 const removeQuery = () => {
-  let newurl;
   if (window.history.pushState && window.location.pathname) {
-    newurl =
-      window.location.protocol +
-      "//" +
-      window.location.host +
-      window.location.pathname;
-    window.history.pushState("", "", newurl);
-  } else {
-    newurl = window.location.protocol + "//" + window.location.host;
-    window.history.pushState("", "", newurl);
+    const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
+    window.history.pushState("", "", url);
+    return;
   }
+
+  const url = `${window.location.protocol}//${window.location.host}`;
+  window.history.pushState("", "", url);
 };
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
-    "https://r0wsbu3wn2.execute-api.us-east-1.amazonaws.com/dev/api/token" +
-      "/" +
-      encodeCode
+    `https://r0wsbu3wn2.execute-api.us-east-1.amazonaws.com/dev/api/token/${encodeCode}`
   );
   const { access_token } = await response.json();
   access_token && localStorage.setItem("access_token", access_token);
@@ -90,7 +84,7 @@ export const getAccessToken = async () => {
       const { authUrl } = result;
       return (window.location.href = authUrl);
     }
-    return code && getAccessToken(code);
+    return code && getToken(code);
   }
   return accessToken;
 };
