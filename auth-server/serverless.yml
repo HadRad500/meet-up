@@ -1,6 +1,6 @@
 service: auth-server
 
-frameworkVersion: "3"
+configValidationMode: off
 
 provider:
   name: aws
