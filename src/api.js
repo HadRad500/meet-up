@@ -38,7 +38,12 @@ export const getEvents = async () => {
     removeQuery();
     const url = `https://r0wsbu3wn2.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url/${token}`;
 
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
     const result = await response.json();
     if (result) {
       return result.events;
@@ -60,7 +65,13 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
-    `https://r0wsbu3wn2.execute-api.us-east-1.amazonaws.com/dev/api/token/${encodeCode}`
+    `https://r0wsbu3wn2.execute-api.us-east-1.amazonaws.com/dev/api/token/${encodeCode}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    }
   );
   const { access_token } = await response.json();
   access_token && localStorage.setItem("access_token", access_token);
@@ -78,7 +89,13 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {
       const response = await fetch(
-        "https://r0wsbu3wn2.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
+        "https://r0wsbu3wn2.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
       );
       const result = await response.json();
       const { authUrl } = result;
