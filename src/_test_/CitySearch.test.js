@@ -7,10 +7,14 @@ import mockData from "../mock-data";
 
 const func = jest.fn();
 describe("<CitySearch /> component", () => {
-    /* let CitySearchComponent;
-    beforeEach(() => {
-        CitySearchComponent = render(<CitySearch allLocations={[]} />);
-    });  */
+  /* let CitySearchComponent;
+  beforeEach(() => {
+    CitySearchComponent = render(<CitySearch
+      allLocations={[]}
+      setCurrentCity={() => { }}
+      setInfoAlert={() => { }}
+    />);
+  }); */
 
   test("renders text input", () => {
     render(<CitySearch setSelectedCity={func} />);

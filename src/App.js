@@ -4,6 +4,9 @@ import Eventlist from "./components/Eventlist";
 import NumberOfEvents from "./components/NumberOfEvents";
 import "./App.css";
 import { getEvents, extractLocations } from "./api";
+import { useState } from "react";
+import { InfoAlert, ErrorAlert } from './components/Alert';
+
 
 const App = () => {
   const [selectedCity, setSelectedCity] = React.useState("See all cities");
@@ -12,6 +15,7 @@ const App = () => {
   const [filteredEvents, setFilteredEvents] = React.useState([]);
   const [noOfEvents, setNoOfEvents] = React.useState(32);
   const [errorAlert, setErrorAlert] = React.useState("");
+  const [infoAlert, setInfoAlert] = useState("");
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -44,9 +48,13 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="alerts-container">
+        {infoAlert.length ? <InfoAlert text={infoAlert}/> : null}
+      </div>
       <CitySearch
         allLocations={allLocations}
         setSelectedCity={(val) => handleCitySelected(val, noOfEvents)}
+        setInfoAlert={setInfoAlert}
       />
       {/* If the number changes and the event filter is filled */}
       <Eventlist events={filteredEvents.length > 0 ? filteredEvents : events} />
