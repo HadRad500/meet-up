@@ -23,9 +23,7 @@ const App = () => {
       const allEvents = await getEvents();
       setEvents(allEvents.slice(0, 32));
       setAllLocations(extractLocations(allEvents));
-    } catch (error) {
-      console.log(error);
-    };
+    }; 
     if (navigator.online) {
       setWarningAlert("");
     } else {
