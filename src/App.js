@@ -2,6 +2,8 @@ import React from "react";
 import CitySearch from "./components/CitySearch";
 import Eventlist from "./components/Eventlist";
 import NumberOfEvents from "./components/NumberOfEvents";
+import CityEventsChart from "./components/CityEventsChart";
+import EventGenresChart from "./components/EventGenresChart";
 import "./App.css";
 import { getEvents, extractLocations } from "./api";
 import { useState } from "react";
@@ -65,7 +67,11 @@ const App = () => {
         setInfoAlert={setInfoAlert}
       />
       {/* If the number changes and the event filter is filled */}
+      <CityEventsChart allLocations={allLocations} events={events} />
+      <div className="charts-container">
+      <EventGenresChart events={events} />
       <Eventlist events={filteredEvents.length > 0 ? filteredEvents : events} />
+      </div>
       <NumberOfEvents
         eventNumber={noOfEvents}
         onEventNumberChange={onEventNumberChange}
