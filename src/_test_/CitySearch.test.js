@@ -17,20 +17,20 @@ describe("<CitySearch /> component", () => {
   }); */
 
   test("renders text input", () => {
-    render(<CitySearch setSelectedCity={func} />);
+    render(<CitySearch setSelectedCity={func} setInfoAlert={func} />);
     const cityTextBox = screen.queryByRole("textbox");
     expect(cityTextBox).toBeInTheDocument();
     expect(cityTextBox).toHaveClass("city");
   });
 
   test("suggestions list is hidden by default", () => {
-    render(<CitySearch setSelectedCity={func} />);
+    render(<CitySearch setSelectedCity={func} setInfoAlert={func} />);
     const suggestionList = screen.queryByRole("list");
     expect(suggestionList).not.toBeInTheDocument();
   });
 
   test("renders a list of suggestions when city textbox gains focus", async () => {
-    render(<CitySearch allLocations={[]} setSelectedCity={func} />);
+    render(<CitySearch allLocations={[]} setSelectedCity={func} setInfoAlert={func} />);
     const user = userEvent.setup();
     const cityTextBox = screen.queryByRole("textbox");
     await user.click(cityTextBox);
@@ -42,7 +42,7 @@ describe("<CitySearch /> component", () => {
   test("updates list of suggestions correctly when user types in city textbox", async () => {
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
-    render(<CitySearch allLocations={allLocations} setSelectedCity={func} />);
+    render(<CitySearch allLocations={allLocations} setSelectedCity={func} setInfoAlert={func} />);
 
     //User types "Berlin" in searchbox
     const cityTextBox = screen.queryByRole("textbox");
@@ -68,7 +68,7 @@ describe("<CitySearch /> component", () => {
   test("renders the suggestion text in the textbox upon clicking on the suggestion", async () => {
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
-    render(<CitySearch allLocations={allLocations} setSelectedCity={func} />);
+    render(<CitySearch allLocations={allLocations} setSelectedCity={func} setInfoAlert={func} />);
     const user = userEvent.setup();
     
 

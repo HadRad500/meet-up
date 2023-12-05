@@ -67,11 +67,11 @@ const App = () => {
         setInfoAlert={setInfoAlert}
       />
       {/* If the number changes and the event filter is filled */}
-      <CityEventsChart allLocations={allLocations} events={events} />
       <div className="charts-container">
+      <CityEventsChart allLocations={allLocations} events={events} />
       <EventGenresChart events={events} />
-      <Eventlist events={filteredEvents.length > 0 ? filteredEvents : events} />
       </div>
+      <Eventlist events={filteredEvents.length > 0 ? filteredEvents : events} />
       <NumberOfEvents
         eventNumber={noOfEvents}
         onEventNumberChange={onEventNumberChange}
