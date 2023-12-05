@@ -1,5 +1,6 @@
-# meet-up
+# Meet-up
 
+## Website Link: https://hadrad500.github.io/meet-up/
 
 ## Feature 2: Show/Hide Event Details:
 ### As a user
